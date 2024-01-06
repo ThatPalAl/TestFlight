@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Linking } from 'react-native'; // Import Linkings
 import NotificationsScreen from './Notifications'; // Import NotificationsScreen
 import AddNew from './AddNew';
-import ServicesScreen from './Services';
+import ServicesScreen from './Services'; 
 import FinancesScreen from './Finances';
 import Facilities from './Facilities';
 import SearchScreen from './Search';
 import ContactScreen from './Contact';
 import NewsScreen from './News';
-import AccountScreen from './Account'
 
 const Stack = createStackNavigator();
-
-const functionalityList = ['App', 'Facilities', 'AddNew', 'Contact', 'News', 'Services', 'Finances'];
 
 export default function App() {
   return (
@@ -24,16 +21,13 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Notifications" component={NotificationsScreen} />
-        <Stack.Screen name="AddNew" component={AddNew} />
-        <Stack.Screen name="Services" component={ServicesScreen} />
-        <Stack.Screen name="Finances" component={FinancesScreen} />
-        <Stack.Screen name="Facilities" component={Facilities} />
-        <Stack.Screen name="Search">
-          {(props) => <SearchScreen {...props} functionalityList={functionalityList} />}
-        </Stack.Screen>
-        <Stack.Screen name="Contact" component={ContactScreen} />
-        <Stack.Screen name="News" component={NewsScreen} />
-        <Stack.Screen name="Account" component={AccountScreen}/>
+        <Stack.Screen name="AddNew" component={AddNew}/>
+        <Stack.Screen name="Services" component={ServicesScreen}/>
+        <Stack.Screen name="Finances" component={FinancesScreen}/>
+        <Stack.Screen name="Facilities" component={Facilities}/>
+        <Stack.Screen name="Search" component={SearchScreen}/>
+        <Stack.Screen name="Contact" component={ContactScreen}/>
+        <Stack.Screen name="News" component={NewsScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -42,24 +36,42 @@ export default function App() {
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [darkMode, setDarkMode] = useState(false);
-
+  
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
-
+  
   const handlePublicTransportPress = () => {
     const publicTransportURL = 'http://www.realbus.pl/rozklad/stop.php?przystanek=3085&numer=52';
     Linking.openURL(publicTransportURL);
   };
-
+  
   const containerStyle = darkMode
     ? { ...styles.container, backgroundColor: '#16161D' }
     : { ...styles.container, backgroundColor: '#FFFFFF' };
-
+  
   const buttonColor = darkMode ? '#1f8475' : '#FCD12A';
 
   return (
     <View style={containerStyle}>
+      {/* Existing UI elements */}
+      
+      {/* Search suggestions */}
+      <View>
+        {filteredComponents.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => {
+              // Navigate or perform action based on the selected item
+              navigation.navigate(item);
+              setSearchValue(''); // Clear search bar after selection (optional)
+            }}
+          >
+            <Text>{item}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
       {/* Additional buttons */}
       <View style={styles.bottomButtons}>
         <View style={styles.buttonRow}>
@@ -78,19 +90,19 @@ const HomeScreen = () => {
             <Text>Payments</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => navigation.navigate('News')}>
-            <Ionicons name='newspaper-outline' size={50} color="black" />
-            <Text>Local news</Text>
+              <Ionicons name='newspaper-outline' size={50} color="black" />
+              <Text>Local news</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.buttonRow}>
-          <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => navigation.navigate('Facilities')}>
+            <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => navigation.navigate('Facilities')}>
             <Ionicons name='basketball-outline' size={50} color="black" />
             <Text>Facilities</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => navigation.navigate('Contact')}>
-            <Ionicons name='call-outline' size={50} color="black" />
-            <Text>Contact</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => navigation.navigate('Contact')}>
+              <Ionicons name='call-outline' size={50} color="black" />
+              <Text>Contact</Text>
+            </TouchableOpacity>
         </View>
       </View>
 
@@ -107,9 +119,6 @@ const HomeScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Notifications')}>
           <Ionicons name="notifications" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Account')}>
-          <Ionicons name="person-sharp" size={24} color="black" />
         </TouchableOpacity>
       </View>
     </View>
