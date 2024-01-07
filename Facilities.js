@@ -9,7 +9,7 @@ const NewScreen = ({ navigation }) => {
       {/* Header */}
       <View style={styles.headerText}>
         <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Facilities</Text>
-        <Text>Which facility would you like to book?</Text>
+        <Text></Text>
       </View>
       
 

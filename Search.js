@@ -22,7 +22,6 @@ const SearchScreen = ({ navigation, functionalityList }) => {
 
     return (
         <View style={containerStyle}>
-            {/* Search bar at the top */}
             <View style={styles.searchContainer}>
                 <TextInput
                     style={styles.searchInput}

@@ -60,7 +60,6 @@ const HomeScreen = () => {
 
   return (
     <View style={containerStyle}>
-      {/* Additional buttons */}
       <View style={styles.bottomButtons}>
         <View style={styles.buttonRow}>
           <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => navigation.navigate('Services')}>
@@ -132,7 +131,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 50,
+    marginTop: 0,
   },
   buttonRow: {
     flexDirection: 'row',
@@ -149,7 +148,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '49%',
     marginVertical: 10,
-    height: 120, // Set a fixed height for all buttons
+    height: 120,
   },
   bottomBar: {
     flexDirection: 'row',
