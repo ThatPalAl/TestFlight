@@ -64,8 +64,23 @@ const EditProfileScreen = () => {
       <TouchableOpacity style={styles.button} onPress={() => {/* Navigate to Change Password screen */}}>
         <Text style={styles.buttonText}>Change Password</Text>
       </TouchableOpacity>
-      {/* Add more buttons or functionalities as needed */}
+      
+      <View style={styles.bottomBar}>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Home')}>
+          <Ionicons name="home" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Search')}>
+          <Ionicons name="search" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Notifications')}>
+          <Ionicons name="notifications" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Account')}>
+          <Ionicons name="person-circle-sharp" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
     </View>
+    
   );
 };
 

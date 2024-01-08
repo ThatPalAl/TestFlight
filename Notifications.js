@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; 
+import { Ionicons } from '@expo/vector-icons';
 
 
 const alertsData = [
@@ -11,7 +11,7 @@ const alertsData = [
     status: 'info',
   },
   {
-    id: 2, 
+    id: 2,
     title: 'Zaginiony kot Miauczek, lat 8',
     description: 'Kuleje na jedną łapkę. Przesyłam zdjęcia w poście, proszę o kontakt.',
   },
@@ -51,17 +51,17 @@ function Notifications({ navigation }) {
 
       {/* Bottom Bar */}
       <View style={styles.bottomBar}>
-        <TouchableOpacity style={styles.bottomBarItem}onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Home')}>
           <Ionicons name="home" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Search')}>
           <Ionicons name="search" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('AddNew')}>
-          <Ionicons name="add-circle-outline" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomBarItem}onPress={() => navigation.navigate('Notifications')}>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Notifications')}>
           <Ionicons name="notifications" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Account')}>
+          <Ionicons name="person-circle-sharp" size={24} color="black" />
         </TouchableOpacity>
       </View>
     </View>

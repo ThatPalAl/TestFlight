@@ -1,7 +1,18 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import ContactScreen from './Contact';
-import { Ionicons } from '@expo/vector-icons'; // Import Ionicons from appropriate library
+import { Ionicons } from '@expo/vector-icons'; 
+
+/*  FORUM 
+Forum jest modułem, gdzie treść jest przeznaczona zarówno dla uzytkowników jak i Administratora. 
+Treść na forum (posty) tworzyć moze zarówno administrator jak uzytkownicy
+Post dzieli sie na kategorie: Skarga, Wniosek, Dyskusja, Ankieta ...
+Kazdy post jest w postaci 'Rodzica' gdzie kazda odpowiedz jest kolejnym 'childem' danego postu:
+-do ustalenia w jaki sposob subposty (komentarze) sa wyswietlane np: 
+        -od najstarszego (pierwsze 5 i rozwin)
+        -od najnowszego (ostatnie 5 i rozwin)
+Posty maja pola: id (BIGINT/LONG) - jako Identity, tytul (STRING), dataStworzenia (DATETIME), DataModyfikacji (DATETIME), Tresc (String/nvarchar), Usuniete (BIT) - jako flaga isDeleted ...
+*/ 
 
 const NewScreen = ({ navigation }) => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons'; 
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 
 const NewScreen = ({ navigation }) => {
@@ -11,23 +11,23 @@ const NewScreen = ({ navigation }) => {
         <Text style={{ fontSize: 24, fontWeight: 'bold' }}>Facilities</Text>
         <Text></Text>
       </View>
-      
+
 
       {/* Buttons */}
       <View style={{ flexDirection: 'column', justifyContent: 'space-between', marginBottom: 20 }}>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={() => { }}>
           <Ionicons name='football' size={24} color="black" />
           <Text>Footbal pitch</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={() => { }}>
           <Ionicons name="water" size={24} color="black" />
           <Text>Swimming Pool</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={() => { }}>
           <Ionicons name="search-circle-outline" size={24} color="black" />
           <Text>Table Tenis</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={() => { }}>
           <Ionicons name="game-controller" size={24} color="black" />
           <Text>Game room</Text>
         </TouchableOpacity>
@@ -35,17 +35,17 @@ const NewScreen = ({ navigation }) => {
 
       {/* Bottom Bar */}
       <View style={styles.bottomBar}>
-        <TouchableOpacity style={styles.bottomBarItem}onPress={() => navigation.navigate('Home')}>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Home')}>
           <Ionicons name="home" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Search')}>
           <Ionicons name="search" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('AddNew')}>
-          <Ionicons name="add-circle-outline" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomBarItem}onPress={() => navigation.navigate('Notifications')}>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Notifications')}>
           <Ionicons name="notifications" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Account')}>
+          <Ionicons name="person-circle-sharp" size={24} color="black" />
         </TouchableOpacity>
       </View>
     </View>
@@ -54,7 +54,7 @@ const NewScreen = ({ navigation }) => {
 
 const styles = {
   headerText: {
-    alignItems:'center',
+    alignItems: 'center',
     backgroundColor: 'orange',
     fontSize: 24,
     fontWeight: 'bold',
@@ -65,8 +65,8 @@ const styles = {
   },
   button: {
     alignItems: 'center',
-    paddingTop:20,
-    paddingVertical:30,
+    paddingTop: 20,
+    paddingVertical: 30,
   },
   bottomBar: {
     flexDirection: 'row',

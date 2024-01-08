@@ -114,11 +114,11 @@ const HomeScreen = () => {
         <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Search')}>
           <Ionicons name="search" size={24} color="black" />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('AddNew')}>
-          <Ionicons name="add-circle-outline" size={24} color="black" />
-        </TouchableOpacity>
         <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Notifications')}>
           <Ionicons name="notifications" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Account')}>
+          <Ionicons name="person-circle-sharp" size={24} color="black" />
         </TouchableOpacity>
       </View>
     </View>
