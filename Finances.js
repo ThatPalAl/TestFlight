@@ -2,6 +2,13 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; 
 
+/* Moduł Płatności
+Podpiecie pod odpowiednie buttony bramek do oplat za gaz, wode, prad, czysz itd
+Administrator wybiera platnosci ktore moga byc obsluzone przez aplikacje. 
+Uzytkownik dostaje instrukcje do skonfigurowania swoich platnosci
+Nalezy zrobic podzakladke 'Podsumowania' platnosci, lub okreslic status przy odpowiednich przyciskach:
+np Prad - Kolor Czerwony/Tresc swiadczaca  o nie zaplaconmy rachunku
+*/
 
 const NewScreen = ({ navigation }) => {
   return (

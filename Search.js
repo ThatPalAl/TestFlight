@@ -2,6 +2,12 @@ import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+/* Search SZUKAJ
+Logika modulu jest dosyc bezposrednia. Ma on ulawtic poruszanie sie w aplikacji.
+Poza Ekranami (Zakladki i pozadkladki), powinien rowniez znajdywac odpowiednie buttony/funkcjonalnosci np : oplac gaz
+
+*/
+
 const SearchScreen = ({ navigation, functionalityList }) => {
   const [searchValue, setSearchValue] = useState('');
   const [darkMode, setDarkMode] = useState(false);
@@ -31,7 +37,6 @@ const SearchScreen = ({ navigation, functionalityList }) => {
           onChangeText={(text) => setSearchValue(text)}
         />
       </View>
-      {/* Display filtered functionalities below the search bar */}
       {searchValue && (
         <View style={styles.functionalityList}>
           {filteredFunctionalities.map((item, index) => (
@@ -39,9 +44,8 @@ const SearchScreen = ({ navigation, functionalityList }) => {
               key={index}
               style={styles.functionalityItem}
               onPress={() => {
-                // Modify the onPress logic here
-                navigation.navigate(item); // Navigate to the screen based on the selected functionality
-                setSearchValue(''); // Clear search bar after selection (optional)
+                navigation.navigate(item);
+                setSearchValue('');
               }}
             >
               <Text>{item}</Text>

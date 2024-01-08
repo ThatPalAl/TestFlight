@@ -1,7 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import ContactScreen from './Contact';
-import { Ionicons } from '@expo/vector-icons'; // Import Ionicons from appropriate library
+import { Ionicons } from '@expo/vector-icons'; 
+
+/* SERVICES /USLUGI
+Modul w ktorym mozemy:
+-Zarezerwowac/umowic usluge  - podzakladka Create/Apply for a service
+-Sprawdzic status uslugi - pozakladka - Check status
+-Zobaczyc liste uslug i cennik (w ramach pkt 1, czy osobno?) - list of services (podzakladka?)
+-Znalezc kontakt do wszelkiego rodzaju uslugodawcow lub administratorow/ochrony (Contacts)
+*/
 
 const NewScreen = ({ navigation }) => {
   return (

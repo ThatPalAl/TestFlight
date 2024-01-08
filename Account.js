@@ -4,6 +4,17 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import EditProfileScreen from './EditProfile';
 
+/* Account / Moje konto
+Modul w ktorym zarzadzamy swoim kontem i ustawieniami aplikacji
+Znajdziemy tutaj:
+-Mozliwosc podejrzenia swojego profilu oraz jego edycje
+-Reset/Zmiana danych dostepowych (haslo  email/login)
+-Ustawienia aplikacji - Powiadomienai, Lokalizacja, DarkMode/LightMode
+-Wylogowanie sie
+-Regulaminy/inf techniczne dot wersji aplikacji
+*/
+
+
 const AccountScreen = () => {
   const user = {
     firstName: 'John',
@@ -14,7 +25,7 @@ const AccountScreen = () => {
   const navigation = useNavigation();
 
   const handleLogout = () => {
-    // Handle logout logic
+
   };
 
   const handleEditProfile = () => {

@@ -2,6 +2,22 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+/* News (more like Advertisements) OGLOSZENIA
+Modul, do którego dostęp mają zarówno uzytkownicy jak i Administrator
+Treść (Obiety jako ogloszenia) moze dodawac jedynie administrator
+Ogloszenia maja charakter infromacyjny.
+Administrator informuje w ten sposob spolecznosc o tym co sie dzieje w ramach osiedla/wspolnoty
+Kazde ogloszenie ma:
+-id, Data stworzenia, DataModyfikacji
+-Tytul
+-Priorytet (R,G,B) Red jako bardzo wazne, Green jako minor itd.
+-Tytul
+-Tresc
+-Autor (id Admina/pracownika osiedla)
+-Czas zycia (do kiedy bedzie wyswietlane)
+*** Nalezy ustalic jaki bedzie schemat wyswietlania ogloszen, co bedzie wplywac na jego pozycje ***
+*/
+
 const NewsScreen = ({ navigation }) => {
   const [darkMode, setDarkMode] = useState(false);
 

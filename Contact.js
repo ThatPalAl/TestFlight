@@ -2,6 +2,18 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
+/* Kontakt
+Podzakladka modulu Uslugi, w ktorym znajdujemy liste pracownikow/uslugodawcow.
+Kazdy Element (uslugodawca) ma:
+-Imie i Nazwisko
+-email (ewentualnie)
+-nr telefonu, 
+-zdjecie (ewentualnie)
+-godziny pracy
+-cennik
+-inne predyspozycje (ewentualnie)
+*/
+
 const ContactScreen = ({navigation}) => {
   const [darkMode, setDarkMode] = useState(false);
 
