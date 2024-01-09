@@ -5,7 +5,6 @@ import { Ionicons } from '@expo/vector-icons';
 /* Search SZUKAJ
 Logika modulu jest dosyc bezposrednia. Ma on ulawtic poruszanie sie w aplikacji.
 Poza Ekranami (Zakladki i pozadkladki), powinien rowniez znajdywac odpowiednie buttony/funkcjonalnosci np : oplac gaz
-
 */
 
 const SearchScreen = ({ navigation, functionalityList }) => {

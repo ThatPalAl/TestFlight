@@ -3,6 +3,17 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 
+/* FACILITIES OBIEKTY
+Modul, pozwalajacy na zebranie i dodawnaie informacji o wszelkiego rodzaju 'obiektach'/'aktywnosciach' ktore sa zapewnione w ramach 
+zycia na osiedlu.
+Glownym celem jest wyswietlenie listy z (prawdopodobnie predefiniowanymi obiektami), ktore nie powinny sie specjalnie zmieniac - 
+-aczkolwiek powinnisy oferowac mozliwosc zapewnienia zmian.
+Z perspektywy uzytkownika natomiast, nalezy pokazac mu liste obiektow, z prostymi szczegolami (typu godziny otwarcia, opiekun/dozorca)
+i ewentualnie udostepnic kalendarz i mozliwosc rezerwowania obiektu.
+Kazdy obiekt powinien tez miec swoje opinie/reviewsy na zasadzie plusow i minusow (Bardziej model skarg/pochwal niz gwiazdek i recenzji)
+ktory pozwala uzytkownikom na biezaco oceniac, informowac o sytuacji obiektow, ewentualnych zazaleniach lub prosbach.
+*/
+
 const NewScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1, paddingHorizontal: 20, paddingTop: 20 }}>

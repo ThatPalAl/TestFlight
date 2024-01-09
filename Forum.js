@@ -3,7 +3,8 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import ContactScreen from './Contact';
 import { Ionicons } from '@expo/vector-icons'; 
 
-/*  FORUM 
+/*  
+FORUM 
 Forum jest modułem, gdzie treść jest przeznaczona zarówno dla uzytkowników jak i Administratora. 
 Treść na forum (posty) tworzyć moze zarówno administrator jak uzytkownicy
 Post dzieli sie na kategorie: Skarga, Wniosek, Dyskusja, Ankieta ...
