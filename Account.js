@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import EditProfileScreen from './EditProfile';
 
 /* Account / Moje konto
 Modul w ktorym zarzadzamy swoim kontem i ustawieniami aplikacji
@@ -14,22 +13,15 @@ Znajdziemy tutaj:
 -Regulaminy/inf techniczne dot wersji aplikacji
 */
 
-
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
   const user = {
     firstName: 'John',
     lastName: 'Doe',
     email: 'johndoe@example.com',
   };
 
-  const navigation = useNavigation();
-
   const handleLogout = () => {
 
-  };
-
-  const handleEditProfile = () => {
-    navigation.navigate('EditProfile');
   };
 
   return (
@@ -41,19 +33,19 @@ const AccountScreen = () => {
         <Text style={styles.email}>{user.email}</Text>
       </View>
       <View style={styles.options}>
-        <TouchableOpacity style={styles.optionItem} onPress={EditProfileScreen}>
+        <TouchableOpacity style={styles.optionItem} onPress={() => { navigation.navigate('EditProfile') }}>
           <Text>Edit Profile</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.optionItem} onPress={() => {/* Implement change password functionality */}}>
+        <TouchableOpacity style={styles.optionItem} onPress={() => {/* Implement change password functionality */ }}>
           <Text>Change Password</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.optionItem} onPress={() => {/* Implement security settings */}}>
+        <TouchableOpacity style={styles.optionItem} onPress={() => {/* Implement security settings */ }}>
           <Text>Security</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.optionItem} onPress={() => {/* Implement notification settings */}}>
+        <TouchableOpacity style={styles.optionItem} onPress={() => {/* Implement notification settings */ }}>
           <Text>Notifications</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.optionItem} onPress={handleLogout}>
+        <TouchableOpacity style={styles.optionItem} onPress={() => {}}>
           <Text style={{ color: 'red' }}>Log Out</Text>
         </TouchableOpacity>
       </View>

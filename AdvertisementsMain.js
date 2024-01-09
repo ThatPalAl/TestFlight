@@ -10,34 +10,28 @@ Modul w ktorym mozemy:
 -Znalezc kontakt do wszelkiego rodzaju uslugodawcow lub administratorow/ochrony (Contacts)
 */
 
-const NewScreen = ({ navigation }) => {
+const AdvertisementsMainScreen = ({navigation}) => {
   return (
     <View style={{ flex: 1, paddingHorizontal: 20, paddingTop: 20 }}>
-      {/* Header */}
       <View style={styles.headerText}>
         <Text style={{ fontSize: 24, fontWeight: 'bold', }}>USŁUGI</Text>
         <Text>Wybierz opcje:</Text>
       </View>
-      {/* Buttons */}
       <View style={{ flexDirection: 'column', justifyContent: 'space-between', marginBottom: 20 }}>
         <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Ionicons name='construct' size={40} color="black" />
-          <Text>Renovation</Text>
+          <Ionicons name='add-circle-sharp' size={50} color="black"/>
+          <Text>Dodaj Ogloszenie</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Ionicons name='bulb' size={40} color="black" />
-          <Text>Electricity</Text>
+          <Ionicons name='bulb' size={50} color="black"/>
+          <Text>Wyswietl aktualne ogloszenia</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Ionicons name="water" size={40} color="black" />
-          <Text>Water</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Ionicons name='rose' size={40} color="black" />
+          <Ionicons name='rose' size={50} color="black"/>
           <Text>Cleaning Service</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate('Contact')}}>
-          <Ionicons name='call-sharp' size={40} color="black" />
+          <Ionicons name='call-sharp' size={50} color="black"/>
           <Text>Contact</Text>
         </TouchableOpacity>
       </View>
@@ -45,16 +39,16 @@ const NewScreen = ({ navigation }) => {
       {/* Bottom Button Bar */}
       <View style={styles.bottomBar}>
         <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Home')}>
-          <Ionicons name="home" size={24} color="black" />
+          <Ionicons name="home" size={24} color="black"/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Search')}>
-          <Ionicons name="search" size={24} color="black" />
+          <Ionicons name="search" size={24} color="black"/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Notifications')}>
-          <Ionicons name="notifications" size={24} color="black" />
+          <Ionicons name="notifications" size={24} color="black"/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Account')}>
-          <Ionicons name="person-circle-sharp" size={24} color="black" />
+          <Ionicons name="person-circle-sharp" size={24} color="black"/>
         </TouchableOpacity>
       </View>
     </View>
@@ -113,4 +107,4 @@ const styles = {
   },
 };
 
-export default NewScreen;
+export default AdvertisementsMainScreen;

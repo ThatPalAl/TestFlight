@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, ScrollView } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, ScrollView, Image} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+
 
 /* News (more like Advertisements) OGLOSZENIA
 Modul, do którego dostęp mają zarówno uzytkownicy jak i Administrator
@@ -77,12 +78,19 @@ const NewsScreen = ({ navigation }) => {
   ];
 
   const renderNews = (newsItem, index) => (
-    <TouchableOpacity key={index} style={styles.newsButton}>
+    <TouchableOpacity
+      key={index}
+      style={styles.newsButton}
+      onPress={() => navigation.navigate('NewsDetails', { newsItem })}
+    >
       <View style={{ ...styles.newsColor, backgroundColor: newsItem.color }} />
       <View style={styles.newsDetails}>
         <Text style={[styles.newsHeader, textStyles, headerStyles]}>{newsItem.header}</Text>
         <Text style={[styles.newsDate, textStyles]}>Published: {newsItem.date}</Text>
-        <Text style={[styles.newsText, textStyles]}>{newsItem.text}</Text>
+        {/* Placeholder image for the news */}
+        <Image source={require('./assets/icon.png')} style={styles.newsImage} />
+        {/* Text to show a snippet of the news */}
+        <Text style={[styles.newsText, textStyles]}>{newsItem.text.slice(0, 100)}...</Text>
       </View>
     </TouchableOpacity>
   );

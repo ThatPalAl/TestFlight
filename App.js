@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Linking } from 'react-native';
-import NotificationsScreen from './Notifications'; 
+import NotificationsScreen from './Notifications';
 import ServicesScreen from './Services';
 import FinancesScreen from './Finances';
 import Facilities from './Facilities';
@@ -13,10 +13,26 @@ import ContactScreen from './Contact';
 import NewsScreen from './News';
 import AccountScreen from './Account';
 import ForumScreen from './Forum';
+import EditProfileScreen from './EditProfile';
+import AdvertisementsMainScreen from './AdvertisementsMain';
+import DocumentsScreen from './Documents';
 
 const Stack = createStackNavigator();
 
-const functionalityList = ['App', 'Facilities', 'Contact', 'News', 'Services', 'Finances'];
+const functionalityList = [
+  'App',
+  'Facilities',
+  'Contact',
+  'News',
+  'Services',
+  'Finances',
+  'EditProfile',
+  'Forum',
+  'Account',
+  'Notifications',
+  'Advertisements',
+  'Documents',
+];
 
 export default function App() {
   return (
@@ -33,7 +49,10 @@ export default function App() {
         <Stack.Screen name="Contact" component={ContactScreen} />
         <Stack.Screen name="News" component={NewsScreen} />
         <Stack.Screen name="Account" component={AccountScreen} />
-        <Stack.Screen name="Forum" component={ForumScreen}/>
+        <Stack.Screen name="Forum" component={ForumScreen} />
+        <Stack.Screen name="EditProfiler" component={EditProfileScreen} />
+        <Stack.Screen name="AdvertisementsMain" component={AdvertisementsMainScreen} />
+        <Stack.Screen name="Documents" component={DocumentsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -76,7 +95,7 @@ const HomeScreen = () => {
             <Ionicons name='card-sharp' size={50} color="black" />
             <Text>Płatności</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => navigation.navigate('Finances') }>
+          <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => navigation.navigate('Documents')}>
             <Ionicons name='file-tray-full-sharp' size={50} color="black" />
             <Text>Dokumenty</Text>
           </TouchableOpacity>

@@ -1,121 +1,171 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import ContactScreen from './Contact';
-import { Ionicons } from '@expo/vector-icons'; 
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-/*  
-FORUM 
-Forum jest modułem, gdzie treść jest przeznaczona zarówno dla uzytkowników jak i Administratora. 
-Treść na forum (posty) tworzyć moze zarówno administrator jak uzytkownicy
-Post dzieli sie na kategorie: Skarga, Wniosek, Dyskusja, Ankieta ...
-Kazdy post jest w postaci 'Rodzica' gdzie kazda odpowiedz jest kolejnym 'childem' danego postu:
--do ustalenia w jaki sposob subposty (komentarze) sa wyswietlane np: 
-        -od najstarszego (pierwsze 5 i rozwin)
-        -od najnowszego (ostatnie 5 i rozwin)
-Posty maja pola: id (BIGINT/LONG) - jako Identity, tytul (STRING), dataStworzenia (DATETIME), DataModyfikacji (DATETIME), Tresc (String/nvarchar), Usuniete (BIT) - jako flaga isDeleted ...
-*/ 
+const posts = [
+  {
+    id: 1,
+    title: 'Znalezione klucze PILNE',
+    author: 'User123',
+    createdDate: '2023-11-10',
+    comments: [
+      { id: 101, author: 'Admin', text: 'We will address this issue soon.' },
+      { id: 102, author: 'User456', text: 'I faced the same problem!' }
+    ]
+  },
+  {
+    id: 2,
+    title: 'Parkowanie na chodniku',
+    author: 'User789',
+    createdDate: '2023-12-05',
+    comments: [
+      { id: 103, author: 'User321', text: 'I suggest organizing a picnic.' }
+    ]
+  },
+  // Add more placeholder posts here
+];
 
-const NewScreen = ({ navigation }) => {
+const ForumScreen = ({ navigation }) => {
+  const renderPosts = () => {
+    return posts.map(post => (
+      <View key={post.id} style={styles.postContainer}>
+        <Text style={styles.postTitle}>{post.title}</Text>
+        <Text style={styles.postText}>Author: {post.author}</Text>
+        <Text style={styles.postText}>Created Date: {post.createdDate}</Text>
+        <TouchableOpacity onPress={() => navigateToPostDetails(post.id)}>
+          <Text style={styles.linkText}>View Comments ({post.comments.length})</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Ionicons name="heart-outline" size={24} color="red" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => replyToPost(post.id)}>
+          <Text style={styles.linkText}>Reply</Text>
+        </TouchableOpacity>
+      </View>
+    ));
+  };
+
+  const navigateToPostDetails = postId => {
+    // Implement navigation to post details using postId
+  };
+
+  const replyToPost = postId => {
+    // Implement replying to the post using postId
+  };
+
+  const handleAddPost = () => {
+    // Implement navigating to the Add Post screen
+  };
+
   return (
-    <View style={{ flex: 1, paddingHorizontal: 20, paddingTop: 20 }}>
-      {/* Header */}
-      <View style={styles.headerText}>
-        <Text style={{ fontSize: 24, fontWeight: 'bold', }}>USŁUGI</Text>
-        <Text>Wybierz opcje:</Text>
-      </View>
-      {/* Buttons */}
-      <View style={{ flexDirection: 'column', justifyContent: 'space-between', marginBottom: 20 }}>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Ionicons name='construct' size={40} color="black" />
-          <Text>Renovation</Text>
+    <View style={styles.container}>
+      {/* Filter options */}
+      <View style={styles.filterContainer}>
+        <TouchableOpacity style={styles.filterButton}>
+          <Text style={styles.filterButtonText}>Filter</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Ionicons name='bulb' size={40} color="black" />
-          <Text>Electricity</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Ionicons name="water" size={40} color="black" />
-          <Text>Water</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Ionicons name='rose' size={40} color="black" />
-          <Text>Cleaning Service</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => {navigation.navigate('Contact')}}>
-          <Ionicons name='call-sharp' size={40} color="black" />
-          <Text>Contact</Text>
-        </TouchableOpacity>
+        {/* Add a dropdown or modal for filter options here */}
+        {/* For simplicity, I'll create a basic modal */}
+        {/* This should be replaced with your preferred dropdown/modal component */}
+        {/* Replace this with your preferred dropdown/modal */}
+        <View style={styles.filterModal}>
+          <TouchableOpacity style={styles.filterOption}>
+            <Text style={styles.filterOptionText}>Most Recent</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.filterOption}>
+            <Text style={styles.filterOptionText}>Favorites</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.filterOption}>
+            <Text style={styles.filterOptionText}>Featured</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
-      {/* Bottom Button Bar */}
-      <View style={styles.bottomBar}>
-        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Home')}>
-          <Ionicons name="home" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Search')}>
-          <Ionicons name="search" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Notifications')}>
-          <Ionicons name="notifications" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Account')}>
-          <Ionicons name="person-circle-sharp" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
+      <ScrollView style={styles.postsContainer}>
+        {renderPosts()}
+      </ScrollView>
+      
+      <TouchableOpacity onPress={handleAddPost} style={styles.addButton}>
+        <Ionicons name="add-circle-outline" size={50} color="blue" />
+      </TouchableOpacity>
     </View>
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
-    paddingTop: 20,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#f8f8f8',
   },
-  header: {
-    backgroundColor: 'orange',
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    marginBottom: 20,
-    alignItems: 'center',
+  postsContainer: {
+    flex: 1,
+    padding: 10,
   },
-  headerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
+  postContainer: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 15,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
-  buttonsContainer: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-  },
-  button: {
-    alignItems: 'center',
-    paddingVertical: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#CCCCCC',
-    flexDirection: 'row',
-  },
-  buttonText: {
-    marginLeft: 10,
+  postTitle: {
     fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
   },
-  bottomBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
+  postText: {
+    fontSize: 14,
+    marginBottom: 5,
+    color: '#555',
+  },
+  linkText: {
+    color: 'blue',
+    textDecorationLine: 'underline',
+    marginBottom: 5,
+  },
+  addButton: {
     position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'lightgray',
-    paddingVertical: 10,
+    bottom: 20,
+    right: 20,
   },
-  bottomBarItem: {
+  filterContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
     alignItems: 'center',
+    padding: 10,
   },
-};
+  filterButton: {
+    backgroundColor: 'lightgray',
+    padding: 10,
+    borderRadius: 5,
+    marginRight: 10,
+  },
+  filterButtonText: {
+    color: 'black',
+  },
+  filterModal: {
+    position: 'absolute',
+    top: 40,
+    right: 20,
+    backgroundColor: 'white',
+    padding: 10,
+    borderRadius: 5,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+  },
+  filterOption: {
+    paddingVertical: 5,
+  },
+  filterOptionText: {
+    color: 'black',
+  },
+});
 
-export default NewScreen;
+export default ForumScreen;
