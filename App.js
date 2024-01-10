@@ -18,6 +18,7 @@ import AdvertisementsMainScreen from './AdvertisementsMain';
 import DocumentsScreen from './Documents';
 import addPostForumScreen from './addPostForum'
 import LoginScreen from './Login';
+import NotificationsSettingsScreen from './NotificationSettings';
 
 
 const Stack = createStackNavigator();
@@ -58,6 +59,7 @@ export default function App() {
         <Stack.Screen name="Documents" component={DocumentsScreen} />
         <Stack.Screen name="addPostForum" component={addPostForumScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="NotificationsSettings" component={NotificationsSettingsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

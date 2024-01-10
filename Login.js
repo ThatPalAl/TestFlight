@@ -36,11 +36,6 @@ const LoginScreen = () => {
         secureTextEntry
       />
       <Button title="Login" onPress={handleLogin} />
-      <Button
-        title="Register"
-        onPress={() => navigation.navigate('Register')}
-        color="green"
-      />
     </View>
   );
 };

@@ -38,7 +38,7 @@ const AccountScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.optionItem} onPress={() => {/* Implement security settings */ }}>
           <Text>Security</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.optionItem} onPress={() => {/* Implement notification settings */ }}>
+        <TouchableOpacity style={styles.optionItem} onPress={() => {navigation.navigate('NotificationsSettings') }}>
           <Text>Notifications</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionItem} onPress={() => {navigation.navigate('Login')}}>
