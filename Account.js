@@ -20,10 +20,6 @@ const AccountScreen = ({ navigation }) => {
     email: 'johndoe@example.com',
   };
 
-  const handleLogout = () => {
-
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -45,7 +41,7 @@ const AccountScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.optionItem} onPress={() => {/* Implement notification settings */ }}>
           <Text>Notifications</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.optionItem} onPress={() => {}}>
+        <TouchableOpacity style={styles.optionItem} onPress={() => {navigation.navigate('Login')}}>
           <Text style={{ color: 'red' }}>Log Out</Text>
         </TouchableOpacity>
       </View>
