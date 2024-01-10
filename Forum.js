@@ -1,60 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const posts = [
-  {
-    id: 1,
-    title: 'Znalezione klucze PILNE',
-    author: 'User123',
-    createdDate: '2023-11-10',
-    comments: [
-      { id: 101, author: 'Admin', text: 'We will address this issue soon.' },
-      { id: 102, author: 'User456', text: 'I faced the same problem!' }
-    ]
-  },
-  {
-    id: 2,
-    title: 'Parkowanie na chodniku',
-    author: 'User789',
-    createdDate: '2023-12-05',
-    comments: [
-      { id: 103, author: 'User321', text: 'I suggest organizing a picnic.' }
-    ]
-  },
-  // Add more placeholder posts here
-];
+const ForumScreen = ({ navigation, route }) => {
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      title: 'Znalezione klucze PILNE',
+      author: 'User123',
+      createdDate: '2023-11-10',
+      comments: [
+        { id: 101, author: 'Admin', text: 'We will address this issue soon.' },
+        { id: 102, author: 'User456', text: 'I faced the same problem!' }
+      ]
+    },
+    {
+      id: 2,
+      title: 'Parkowanie na chodniku',
+      author: 'User789',
+      createdDate: '2023-12-05',
+      comments: [
+        { id: 103, author: 'User321', text: 'I suggest organizing a picnic.' }
+      ]
+    },
+    // Add more placeholder posts here
+  ]);
 
-const ForumScreen = ({ navigation }) => {
+  useEffect(() => {
+    if (route.params && route.params.newPost) {
+      const newPost = route.params.newPost;
+      setPosts([...posts, newPost]);
+    }
+  }, [route.params]);
+
   const renderPosts = () => {
     return posts.map(post => (
       <View key={post.id} style={styles.postContainer}>
-        <Text style={styles.postTitle}>{post.title}</Text>
-        <Text style={styles.postText}>Author: {post.author}</Text>
-        <Text style={styles.postText}>Created Date: {post.createdDate}</Text>
-        <TouchableOpacity onPress={() => navigateToPostDetails(post.id)}>
-          <Text style={styles.linkText}>View Comments ({post.comments.length})</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Ionicons name="heart-outline" size={24} color="red" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => replyToPost(post.id)}>
-          <Text style={styles.linkText}>Reply</Text>
-        </TouchableOpacity>
-      </View>
+      <Text style={styles.postTitle}>{post.title}</Text>
+      <Text style={styles.postText}>Author: {post.author}</Text>
+      <Text style={styles.postText}>Created Date: {post.createdDate}</Text>
+      <TouchableOpacity onPress={() => navigateToPostDetails(post.id)}>
+        <Text style={styles.linkText}>View Comments ({post.comments.length})</Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Ionicons name="heart-outline" size={24} color="red" />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => replyToPost(post.id)}>
+        <Text style={styles.linkText}>Reply</Text>
+      </TouchableOpacity>
+    </View>
     ));
   };
 
-  const navigateToPostDetails = postId => {
-    // Implement navigation to post details using postId
-  };
-
-  const replyToPost = postId => {
-    // Implement replying to the post using postId
-  };
-
   const handleAddPost = () => {
-    // Implement navigating to the Add Post screen
+    navigation.navigate('addPostForum');
   };
 
   return (
@@ -82,15 +81,31 @@ const ForumScreen = ({ navigation }) => {
       </View>
 
       <ScrollView style={styles.postsContainer}>
-        {renderPosts()}
+        {posts.map(post => (
+           <View key={post.id} style={styles.postContainer}>
+           <Text style={styles.postTitle}>{post.title}</Text>
+           <Text style={styles.postText}>Author: {post.author}</Text>
+           <Text style={styles.postText}>Created Date: {post.createdDate}</Text>
+           <TouchableOpacity onPress={() => navigateToPostDetails(post.id)}>
+             <Text style={styles.linkText}>View Comments ({post.comments.length})</Text>
+           </TouchableOpacity>
+           <TouchableOpacity>
+             <Ionicons name="heart-outline" size={24} color="red" />
+           </TouchableOpacity>
+           <TouchableOpacity onPress={() => replyToPost(post.id)}>
+             <Text style={styles.linkText}>Reply</Text>
+           </TouchableOpacity>
+         </View>
+        ))}
       </ScrollView>
-      
+
       <TouchableOpacity onPress={handleAddPost} style={styles.addButton}>
         <Ionicons name="add-circle-outline" size={50} color="blue" />
       </TouchableOpacity>
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

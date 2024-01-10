@@ -16,6 +16,8 @@ import ForumScreen from './Forum';
 import EditProfileScreen from './EditProfile';
 import AdvertisementsMainScreen from './AdvertisementsMain';
 import DocumentsScreen from './Documents';
+import addPostForumScreen from './addPostForum'
+
 
 const Stack = createStackNavigator();
 
@@ -53,6 +55,7 @@ export default function App() {
         <Stack.Screen name="EditProfiler" component={EditProfileScreen} />
         <Stack.Screen name="AdvertisementsMain" component={AdvertisementsMainScreen} />
         <Stack.Screen name="Documents" component={DocumentsScreen} />
+        <Stack.Screen name="addPostForum" component={addPostForumScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
