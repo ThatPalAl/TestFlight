@@ -1,43 +1,41 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; 
+import { View, Text, TouchableOpacity, Linking} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-/* Moduł Płatności
-Podpiecie pod odpowiednie buttony bramek do oplat za gaz, wode, prad, czysz itd
-Administrator wybiera platnosci ktore moga byc obsluzone przez aplikacje. 
-Uzytkownik dostaje instrukcje do skonfigurowania swoich platnosci
-Nalezy zrobic podzakladke 'Podsumowania' platnosci, lub okreslic status przy odpowiednich przyciskach:
-np Prad - Kolor Czerwony/Tresc swiadczaca  o nie zaplaconmy rachunku
-*/
 
-const NewScreen = ({ navigation }) => {
+
+const FinancesScreen = ({ navigation }) => {
+
+  const handlePayment = () => {
+    const paymentGateway = 'https://go.przelewy24.pl/trnRequest/A6F1687FC8-8EFC9D-DF48F8-48035DADE5';
+    Linking.openURL(paymentGateway);
+  };
+
   return (
     <View style={{ flex: 1, paddingHorizontal: 20, paddingTop: 20 }}>
       {/* Header */}
       <View style={styles.headerText}>
-        <Text style={{ fontSize: 24, fontWeight: 'bold', }}>OPTION</Text>
-        <Text>Please choose one of the options below</Text>
+        <Text style={{ fontSize: 24, fontWeight: 'bold', }}>USŁUGI</Text>
+        <Text>Oto Twoje płatności, wybierz :</Text>
       </View>
-
       {/* Buttons */}
       <View style={{ flexDirection: 'column', justifyContent: 'space-between', marginBottom: 20 }}>
-        <TouchableOpacity style={styles.button} onPress={() => { }}>
-          <Ionicons name='bus-outline' size={24} color="black" />
-          <Text>Public Transport news</Text>
+        <TouchableOpacity style={styles.button} onPress={handlePayment}>
+          <Ionicons name='construct' size={40} color="black" />
+          <Text>Czynsz administracyjny</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => { }}>
-          <Ionicons name="add-circle-outline" size={24} color="black" />
-          <Text>Button 2</Text>
+        <TouchableOpacity style={styles.button} onPress={handlePayment}>
+          <Ionicons name='bulb' size={40} color="black" />
+          <Text>Prąd</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => { }}>
-          <Ionicons name="add-circle-outline" size={24} color="black" />
-          <Text>Button 3</Text>
+        <TouchableOpacity style={styles.button} onPress={handlePayment}>
+          <Ionicons name="water" size={40} color="black" />
+          <Text>Woda</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => { }}>
-          <Ionicons name="add-circle-outline" size={24} color="black" />
-          <Text>Button 4</Text>
+        <TouchableOpacity style={styles.button} onPress={handlePayment}>
+          <Ionicons name='rose' size={40} color="black" />
+          <Text>Gaz</Text>
         </TouchableOpacity>
-        {/* Add similar TouchableOpacity components for other buttons */}
       </View>
 
       {/* Bottom Button Bar */}
@@ -59,18 +57,43 @@ const NewScreen = ({ navigation }) => {
   );
 };
 
+
+
 const styles = {
-  headerText: {
+  container: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: 20,
+    backgroundColor: '#FFFFFF',
+  },
+  header: {
     backgroundColor: 'orange',
-    fontSize: 24,
-    fontWeight: 'bold',
+    borderRadius: 5,
     paddingHorizontal: 10,
     paddingVertical: 10,
-    borderRadius: 5,
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  buttonsContainer: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
     marginBottom: 20,
   },
   button: {
     alignItems: 'center',
+    paddingVertical: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#CCCCCC',
+    flexDirection: 'row',
+  },
+  buttonText: {
+    marginLeft: 10,
+    fontSize: 18,
   },
   bottomBar: {
     flexDirection: 'row',
@@ -83,6 +106,9 @@ const styles = {
     backgroundColor: 'lightgray',
     paddingVertical: 10,
   },
+  bottomBarItem: {
+    alignItems: 'center',
+  },
 };
 
-export default NewScreen;
+export default FinancesScreen;

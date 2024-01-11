@@ -21,6 +21,7 @@ import LoginScreen from './Login';
 import NotificationsSettingsScreen from './NotificationSettings';
 
 
+
 const Stack = createStackNavigator();
 
 const functionalityList = [
@@ -98,7 +99,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.buttonRow}>
-          <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={handlePayment}>
+          <TouchableOpacity style={[styles.button, { backgroundColor: buttonColor }]} onPress={() => navigation.navigate('Finances')}>
             <Ionicons name='card-sharp' size={50} color="black" />
             <Text>Płatności</Text>
           </TouchableOpacity>

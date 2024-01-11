@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { View, Switch, Text, StyleSheet } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { View, Switch, Text, StyleSheet, TouchableOpacity } from 'react-native';
+
 
 const NotificationsSettings = () => {
   const [replyNotifications, setReplyNotifications] = useState(false);
@@ -80,6 +82,20 @@ const NotificationsSettings = () => {
           value={eventNotifications}
         />
       </View>
+      <View style={styles.bottomBar}>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Home')}>
+          <Ionicons name="home" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Search')}>
+          <Ionicons name="search" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Notifications')}>
+          <Ionicons name="notifications" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.bottomBarItem} onPress={() => navigation.navigate('Account')}>
+          <Ionicons name="person-circle-sharp" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -102,6 +118,24 @@ const styles = StyleSheet.create({
   settingText: {
     fontSize: 16,
     flex: 3,
+  },
+  buttonText: {
+    marginLeft: 10,
+    fontSize: 18,
+  },
+  bottomBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'lightgray',
+    paddingVertical: 10,
+  },
+  bottomBarItem: {
+    alignItems: 'center',
   },
 });
 
